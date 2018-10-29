@@ -26,7 +26,7 @@
     insertbefore: '^#cache_dir '
     line: maximum_object_size 100 MB
 
-- name: start incrond via supervisord
+- name: start squid via supervisord
   command: supervisorctl stop
   when: squidconf.changed
 
@@ -34,6 +34,6 @@
   command: squid -z
   when: squidconf.changed
 
-- name: start incrond via supervisord
+- name: update squid via supervisord
   command: supervisorctl update
   when: supervisord.changed
