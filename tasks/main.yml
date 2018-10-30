@@ -1,9 +1,11 @@
 ---
 - name: install os packages
   yum:
-    name: "{{ item }}"
+    name:
+    - squid
+    - net-tools
+    - iftop
     state: installed
-  with_items: "{{ os_packages }}"
 
 - name: configure autostart of squid with supervisord
   blockinfile:
