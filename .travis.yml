@@ -21,6 +21,7 @@ script:
   - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/bassinator.$ROLE_NAME:ro ${run_opts} bassualdo/centosvagrant:latest > "${container_id}"'
 # install ansible
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm pip install ansible'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm easy_install pip'
 # check syntax
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/bassinator.$ROLE_NAME/tests/test.yml --syntax-check'
 # check first run does not fail
