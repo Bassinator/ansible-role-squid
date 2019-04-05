@@ -28,6 +28,12 @@
     insertbefore: '^#cache_dir '
     line: maximum_object_size 100 MB
 
+- name: allow access from 172.17.0.0/12
+  lineinfile:
+    path: /etc/squid/squid.conf
+    insertafter: '^acl localnet src 172.16.0.0/12'
+    line: acl localnet src 172.17.0.0/12
+
 - name: start squid via supervisord
   command: supervisorctl stop
   when: squidconf.changed
