@@ -19,7 +19,7 @@
   lineinfile:
     path: /etc/squid/squid.conf
     insertafter: '^#cache_dir '
-    line: cache_dir ufs /vagrant/squid 3072 16 256
+    line: cache_dir ufs /var/spool/squid 3072 16 256
   register: squidconf
 
 - name: Set max filesize to cache
